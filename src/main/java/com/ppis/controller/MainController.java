@@ -1,5 +1,7 @@
 package com.ppis.controller;
 
+import com.ppis.dto.Entity1Dto;
+import com.ppis.dto.GetByIdDto;
 import com.ppis.dto.Rs.AllEntity1RsDto;
 import com.ppis.service.MainService;
 import io.swagger.annotations.ApiOperation;
@@ -17,22 +19,22 @@ public class MainController {
 
     //FindAll
     @ApiOperation("Получение списка всех объектов")
-    @GetMapping(path = "/getAll")
+    @GetMapping(path = "/getAllEntity1")
     public AllEntity1RsDto GetAll(){
-        return mainService.GetAll();
+        return mainService.GetAllEntity1();
     }
 
     //Get
-//    @ApiOperation("Получение днища по id")
-//    @PostMapping(path="/getBottomById", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public GetBottomByIdRsDto GetById(@RequestBody GetBottomByIdRqDto getBottomByIdRqDto) {
-//        return mainService.GetBottomById(getBottomByIdRqDto);
-//    }
-//
-//    //Add
-//    @ApiOperation("Добавление цистерны")
-//    @PostMapping(path="/addCistern", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public AddCisternRsDto Add(@RequestBody AddCisternRqDto addCisternRqDto){
-//        return mainService.AddCistern(addCisternRqDto);
-//    }
+    @ApiOperation("Получение Entity1 по id")
+    @PostMapping(path="/getEntity1ById", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Entity1Dto GetById(@RequestBody GetByIdDto getByIdDto) {
+        return mainService.GetById(getByIdDto);
+    }
+
+    //Add
+    @ApiOperation("Добавление энтити")
+    @PostMapping(path="/addEntity1", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Entity1Dto Add(@RequestBody Entity1Dto entity1Dto){
+        return mainService.AddEntity1(entity1Dto);
+    }
 }
