@@ -1,7 +1,6 @@
 package com.ppis.service;
 
 import com.ppis.dto.Entity1Dto;
-import com.ppis.dto.GetByIdDto;
 import com.ppis.dto.Rs.AllEntity1RsDto;
 import com.ppis.entity.Entity1;
 import com.ppis.repository.Entity1Repository;
@@ -22,8 +21,8 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public Entity1Dto GetById(GetByIdDto idDto) {
-        return new Entity1Dto(entity1Repository.getById(idDto.getId()));
+    public Entity1Dto GetById(int id) {
+        return new Entity1Dto(entity1Repository.getById(id));
     }
 
     @Override
@@ -34,5 +33,10 @@ public class MainServiceImpl implements MainService {
                 .p2(entity1Dto.getP2())
                 .p3(entity1Dto.getP3())
                 .build()));
+    }
+
+    @Override
+    public void DeleteById(int id) {
+        entity1Repository.deleteById(id);
     }
 }
